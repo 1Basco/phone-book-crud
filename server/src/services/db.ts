@@ -12,7 +12,7 @@ export const openConnection = () => {
         `CREATE TABLE contact (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             first_name text, 
-            second_name text, 
+            last_name text, 
             phone_number text UNIQUE,
             constraint phone_number_unique UNIQUE (phone_number)
             )`,

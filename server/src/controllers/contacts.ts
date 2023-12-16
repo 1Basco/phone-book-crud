@@ -6,7 +6,7 @@ const listContacts = ({}: Request, res: Response) => {
   contactModel
     .listContacts()
     .then((contacts) => {
-      res.json(contacts);
+      res.json(contacts as Contact[]);
     })
     .catch((err) => internalServerError(res, err));
 };
@@ -65,7 +65,7 @@ const getContact = (req: Request, res: Response) => {
   if (id > 0) {
     contactModel
       .getContact(id)
-      .then((contact) => res.json(contact))
+      .then((contact) => res.json(contact as Contact))
       .catch((err) => internalServerError(res, err));
   }
 };

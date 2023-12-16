@@ -8,14 +8,14 @@ export type Contact = {
 };
 
 const listContacts = async () => {
-  const sql = `SELECT * FROM contact`;
+  const sql = `SELECT id, first_name as firstName, last_name as lastName, phone_number as phoneNumber FROM contact`;
   const params: any = [];
   const rows = await queryDB(sql, params);
   return rows as Contact[];
 };
 
 const insertContact = async (contact: Contact): Promise<any> => {
-  const sql = `INSERT INTO contact (first_name, second_name, phone_number) VALUES (?, ?, ?)`;
+  const sql = `INSERT INTO contact (first_name, last_name, phone_number) VALUES (?, ?, ?)`;
   const params = [contact.firstName, contact.lastName, contact.phoneNumber];
   await queryDB(sql, params);
   let rows = await queryDB(
@@ -26,7 +26,7 @@ const insertContact = async (contact: Contact): Promise<any> => {
 };
 
 const getContact = async (id: number) => {
-  const sql = `SELECT * FROM contact WHERE id = ?`;
+  const sql = `SELECT id, first_name as firstName, last_name as lastName, phone_number as phoneNumber FROM contact WHERE id = ?`;
   const params = [id];
   const rows = await queryDBFirst(sql, params);
   return rows as Contact | undefined;
