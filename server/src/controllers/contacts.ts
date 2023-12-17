@@ -65,7 +65,10 @@ const getContact = (req: Request, res: Response) => {
   if (id > 0) {
     contactModel
       .getContact(id)
-      .then((contact) => res.json(contact as Contact))
+      .then((contact) => {
+        if (!contact) return notFound(res);
+        return res.json(contact as Contact);
+      })
       .catch((err) => internalServerError(res, err));
   }
 };

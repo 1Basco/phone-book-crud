@@ -39,7 +39,7 @@ const deleteContact = async (id: number) => {
 };
 
 const updateContact = async (contact: Contact) => {
-  const sql = `UPDATE contact SET first_name = ?, second_name = ?, phone_number = ? WHERE id = ?`;
+  const sql = `UPDATE contact SET first_name = ?, last_name = ?, phone_number = ? WHERE id = ?`;
   const params = [
     contact.firstName,
     contact.lastName,
