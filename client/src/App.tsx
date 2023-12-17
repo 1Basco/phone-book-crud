@@ -1,12 +1,20 @@
-import './App.css'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { MainLayout } from "./layouts/main"
+import { MainNavigator } from "./navigator"
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
+const queryClient = new QueryClient()
 function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <ToastContainer />
+      <QueryClientProvider client={queryClient}>
+        <MainLayout>
+          <MainNavigator />
+        </MainLayout>
+      </QueryClientProvider>
     </>
   )
 }
